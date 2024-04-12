@@ -190,7 +190,69 @@ if (isset($_GET['success'])) {
   <div class="modal-content">
     <span class="close">&times;</span>
     <h2>Privacy Policy</h2>
-    <!-- Add your privacy policy content here -->
+    <p>Villa Delos Reyes Private Resort and Events Place is committed to protecting the privacy and security of your personal information. This Privacy Policy describes how we collect, use, and disclose personal information when you visit our website or use our services. By signing up, we assume you have read and understand these policies and agree to them.</p>
+    <ol>
+       
+          
+      
+        <li>
+            <h3>Information We Collect</h3>
+            <p>
+                <strong>Personal Information:</strong> When you visit our website or make a reservation, we may collect personal information such as your name, email address, phone number, and payment information.<br>
+                <strong>Usage Information:</strong> We may collect information about your interactions with our website, such as your IP address, browser type, pages visited, and the time and date of your visit.<br>
+                <strong>Cookies:</strong> We may use cookies and similar tracking technologies to improve your experience on our website and for analytics purposes. You can control cookies through your browser settings.
+            </p>
+        </li>
+        <li>
+            <h3>How We Use Your Information</h3>
+            <p>We may use the information we collect for the following purposes:</p>
+            <ul>
+                <li>To process reservations and bookings</li>
+                <li>To communicate with you about your reservation or inquiries</li>
+                <li>To improve our services and website</li>
+                <li>To send promotional emails and marketing communications, which you can opt out of at any time</li>
+                <li>To comply with legal obligations</li>
+            </ul>
+        </li>
+        <li>
+            <h3>Information Sharing</h3>
+            <p>We may share your personal information with third parties in the following circumstances:</p>
+            <ul>
+                <li>With service providers who help us operate our website and provide services to you (e.g., payment processors, email service providers)</li>
+                <li>With law enforcement or government agencies in response to a legal request or investigation</li>
+                <li>In connection with a merger, acquisition, or sale of assets</li>
+            </ul>
+        </li>
+        <li>
+            <h3>Data Security</h3>
+            <p>We take the security of your personal information seriously and implement reasonable measures to protect it from unauthorized access, disclosure, alteration, or destruction.</p>
+        </li>
+        <li>
+            <h3>Data Retention</h3>
+            <p>We will retain your personal information for as long as necessary to fulfill the purposes outlined in this Privacy Policy, unless a longer retention period is required or permitted by law.</p>
+        </li>
+        <li>
+            <h3>Your Rights</h3>
+            <p>You have the right to:</p>
+            <ul>
+                <li>Access, correct, or delete your personal information</li>
+                <li>Object to the processing of your personal information</li>
+                <li>Withdraw your consent at any time, if we are processing your personal information based on consent</li>
+            </ul>
+        </li>
+        <li>
+            <h3>Children's Privacy</h3>
+            <p>Our website and services are not directed at children under the age of 13, and we do not knowingly collect personal information from children.</p>
+        </li>
+        <li>
+            <h3>Changes to This Privacy Policy</h3>
+            <p>We may update this Privacy Policy from time to time. It is your responsibility to check this page periodically for changes.</p>
+        </li>
+        <li>
+            <h3>Contact Us</h3>
+            <p>If you have any questions or concerns about this Privacy Policy or our practices, please contact us at <a href="tel:09165903708">0916 590 3708</a> or <a href="mailto:villadelosreyes@yahoo.com">villadelosreyes@yahoo.com</a>.</p>
+        </li>
+    </ol>
   </div>
 </div>
 
