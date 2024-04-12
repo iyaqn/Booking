@@ -133,6 +133,28 @@ class Email
                         </p>
                         <p class="mb-0">We look forward to welcoming you soon!</p>
                     </div>
+                    <h5 class="text-center">Rules and Regulations</h5>
+                            <p class="rules">
+                                <strong>1. </strong> Guests must be in proper swimming attire when in the pool.<br />
+                                <strong>2. </strong> Guests are NOT ALLOWED to dive into the pool.<br />
+                                <strong>3. </strong> Guests are NOT ALLOWED to run and play around the pool.<br />
+                                <strong>4. </strong> Guests are NOT ALLOWED to eat and drink in the pool area.<br />
+                                <strong>5. </strong> Guests must keep the resort clean at all times.<br />
+                                <strong>6. </strong> Guests are not allowed to smoke inside the rooms.<br />
+                                <strong>7. </strong> Pets are allowed but should always wear diaper when inside the resort premises.<br />
+                                <strong>8. </strong> Guests are only allowed to use the videoke from 8 AM to 10 PM only.<br />
+                                <strong>9. </strong> Guests must be responsible to look after their personal belongings,  
+                                 Villa <br/> Delos Reyes Private Resort will not be held accountable for any loss or damage.<br />
+                                <strong>10. </strong> Guests must always take care of their children, elderly, and persons with disabilities.<br />
+                                <strong>11. </strong> Villa Delos Reyes Private Resort will not be liable for any accidents or injuries obtained by 
+                                the guests <br> during their stay. However, the resort will help and provide first aid.<br />
+                                <strong>12. </strong> There will be an inspection by the caretakers 30 minutes before the check-out 
+                                of the guests. Any loss or damage of property during the stay will be charged to the guests accordingly. <br />
+                                <strong>13. </strong> Guests must immediately report any problem or inconvenience that they may experience. <br />
+                                <strong>14. </strong> Guests are advised to observe safety measures while staying in the resort. <br />
+                                <strong>15. </strong> ILLEGAL ACTIVITIES ARE STRICTLY PROHIBITED. <br />
+                                <strong>16. </strong> NO FIREARMS OR DEADLY WEAPONS ARE ALLOWED. <br />
+                            </p>
                     </div>
                 </div>
                 </div>

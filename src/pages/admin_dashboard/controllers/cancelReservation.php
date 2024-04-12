@@ -22,7 +22,7 @@ if ($cancelReservation) {
     $type = 'reservation_cancelled';
     $message = "
         <p>Hi {$userDetails['FirstName']} {$userDetails['LastName']},</p>
-        <p>Your reservation with Reservation Name: {$reservationDetails['ReservationID']} has been cancelled.</p>
+        <p>Your reservation with Reservation ID: {$reservationDetails['ReservationID']} has been cancelled.</p>
         <p>For more information, please contact us at <a href='mailto:officialnexuslink@gmail.com'>
     ";
     $email->sendEmail($to, $subject, $type, $message);

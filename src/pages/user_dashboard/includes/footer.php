@@ -13,8 +13,8 @@
           <div class="col-xs-6 col-md-3">
             <h6>Contact</h6>
             <ul class="footer-links">
-                <li><img src="phone-call.png" style="height: 30px; width: 50px" > 09999999</li>
-                <li><img src="email.png" style="height: 50px; width: 50px"> 09999999</li>
+                <li><img src="phone-call.png" style="height: 30px; width: 50px" > 09165903708</li>
+                <li><img src="email.png" style="height: 50px; width: 50px"> villadelosreyes@yahoo.com</li>
             </ul>
           </div>
         </div>

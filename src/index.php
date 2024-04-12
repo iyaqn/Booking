@@ -305,7 +305,8 @@ if (isset($_GET['success'])) {
             </ol>
         </li>
     </ol>
-    <p>By using our website and services, you agree to abide by these terms and conditions. If you have any questions or concerns, please contact us at <a href="tel:09165903708">0916 590 3708</a> or <a href="mailto:villadelosreyes@yahoo.com">villadelosreyes@yahoo.com</a>.</p>
+    <p>By using our website and services, you agree to abide by these terms and conditions. If you have any questions or concerns, please contact us at <a href="tel:09165903708">0916 590 3708</a> or 
+    <a href="mailto:villadelosreyes@yahoo.com">villadelosreyes@yahoo.com</a>.</p>
   </div>
 </div>
             </form>
