@@ -19,7 +19,7 @@ if ($error) {
 } else {
     echo "
     <script>
-        alert('{$success}');
+       
     </script>
     ";
 }
@@ -83,25 +83,8 @@ if ($error) {
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
-                    aria-expanded="true" aria-controls="collapsePages">
-                    <i class="fas fa-fw fa-folder"></i>
-                    <span>Pages</span>
-                </a>
-                <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Pages:</h6>
-                        <a class="collapse-item" href="login.php">Login</a>
-                        <a class="collapse-item" href="home.php">Home</a>
-                        <a class="collapse-item" href="gallery.php">Gallery</a>
-                        <a class="collapse-item" href="offers.php">Offers</a>
-                        <a class="collapse-item" href="about.php">About</a>
-                        <a class="collapse-item" href="booking1.php">Package Booking</a>
-                        <a class="collapse-item" href="booking2.php">Add ons</a>
-                        <a class="collapse-item" href="payment.php">Payment</a>
-                        <a class="collapse-item" href="summary.php">Summary</a>
-                    </div>
-                </div>
+               
+                
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="packages.php">

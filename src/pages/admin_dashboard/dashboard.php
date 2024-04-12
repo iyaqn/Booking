@@ -148,7 +148,9 @@ if (isset($_GET['reservation'])) {
 
                             $payment = new Payment($conn);
                             $totalAmount = $payment->getTotalEarnings();
+                           $pendingReservationCount = $reservations->getPendingReservationCount();
                             ?>
+                            
                             <!-- Dashboard cards -->
                             <div class="row">
                                 <div class="col-xl-3 col-md-6 mb-4">
@@ -189,42 +191,24 @@ if (isset($_GET['reservation'])) {
                                         </div>
                                     </div>
                                 </div>
+                            
                                 <div class="col-xl-3 col-md-6 mb-4">
-                                    <div class="card border-left-info shadow h-100 py-2">
-                                        <div class="card-body">
-                                            <div class="row no-gutters align-items-center">
-                                                <div class="col mr-2">
-                                                    <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
-                                                        Total Guests</div>
-                                                    <div class="h5 mb-0 font-weight-bold text-gray-800">200</div>
-                                                </div>
-                                                <div class="col-auto">
-                                                    <i class="fas fa-users fa-2x text-gray-300"></i>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-xl-3 col-md-6 mb-4">
-                                    <div class="card border-left-warning shadow h-100 py-2">
-                                        <div class="card-body">
-                                            <div class="row no-gutters align-items-center">
-                                                <div class="col mr-2">
-                                                    <div
-                                                        class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                                        Pending Requests</div>
-                                                    <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
-                                                </div>
-                                                <div class="col-auto">
-                                                    <i class="fas fa-comments fa-2x text-gray-300"></i>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+        <div class="card border-left-warning shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                            Pending Requests</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $pendingReservationCount; ?></div>
                     </div>
+                    <div class="col-auto">
+                        <i class="fas fa-comments fa-2x text-gray-300"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
                     <div class="row">
                         <div class="col-md-12">
                             <div class="card">
@@ -298,7 +282,7 @@ if (isset($_GET['reservation'])) {
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2021</span>
+                        <span>Copyright &copy; Villa Delos Reyes Private Resort and Events Place 2021</span>
                     </div>
                 </div>
             </footer>

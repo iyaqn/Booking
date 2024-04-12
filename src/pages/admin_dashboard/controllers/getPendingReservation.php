@@ -1,3 +1,4 @@
+
 <?php
 include '../../../includes/autoloader.php';
 
@@ -11,6 +12,7 @@ $reservations = new Reservations($connection);
 $reservations = $reservations->getPendingReservation();
 
 $guests = new User($conn);
+
 
 foreach ($reservations as $reservation) {
     $user = new User($conn);
@@ -65,6 +67,8 @@ foreach ($reservations as $reservation) {
         "payment_proof" => $paymentProof,
         "status" => $badge
     ];
+
+    
 }
 
 echo json_encode($reservationList);

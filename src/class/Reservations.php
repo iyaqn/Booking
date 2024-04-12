@@ -39,6 +39,14 @@ class Reservations
         return $reservations;
     }
 
+    public function getPendingReservationCount()
+    {
+        $query = "SELECT COUNT(*) AS count FROM reservations WHERE status = 'pending'";
+        $result = $this->conn->query($query);
+        $row = $result->fetch_assoc();
+        return $row['count'];
+    }
+
     public function getReservationUser($reservation_id)
     {
         $query = "SELECT * FROM reservations WHERE ReservationID = $reservation_id";
