@@ -496,11 +496,11 @@ window.onclick = function(event) {
             rules: {
                 first_name: {
                     required: true,
-                    lettersOnly: true
+                    lettersWithSpaceOnly: true
                 },
                 last_name: {
                     required: true,
-                    lettersOnly: true
+                    lettersWithSpaceOnly: true
                 },
                 cont_no: {
                     required: true,
