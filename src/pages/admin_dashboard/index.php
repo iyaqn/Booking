@@ -56,7 +56,7 @@ if ($error) {
                 <h1>Admin Login</h1>
                 <input type="text" id="email" name="email" placeholder="Username" />
                 <input type="password" id="password" name="password" placeholder="Password" />
-                <a href="#">Forgot your password?</a>
+                <!-- <a href="#">Forgot your password?</a> -->
                 <button type="submit" value="Login">Sign In</button>
                 <a href="..\..\index.php">Back to User Login</a>
             </form>

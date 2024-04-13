@@ -487,10 +487,15 @@ window.onclick = function(event) {
             });
         });
 
+        $.validator.addMethod("passwordMatch", function(value, element) {
+        return $('#password').val() === $('#confirm_password').val();
+    }, "Your passwords do not match. Please try again.");
+
         // validation for first and last names
-        $.validator.addMethod("lettersOnly", function(value, element) {
-            return this.optional(element) || /^[a-zA-Z]+$/i.test(value);
-        }, "Letters only please");
+        $.validator.addMethod("lettersWithSpaceOnly", function(value, element) {
+    return this.optional(element) || /^[a-zA-Z\s]+$/.test(value);
+}, "Please enter letters and spaces only.");
+
 
         $('#signup').validate({
             rules: {
@@ -504,10 +509,19 @@ window.onclick = function(event) {
                 },
                 cont_no: {
                     required: true,
-                    minlength: 10,
+                    minlength: 11,
                     maxlength: 11,
                     digits: true
-                }
+                },
+            password: {
+                required: true,
+                minlength: 8
+            },
+            confirm_password: {
+                required: true,
+                minlength: 8,
+                passwordMatch: true
+            }
             },
             messages: {
                 first_name: {
@@ -518,15 +532,26 @@ window.onclick = function(event) {
                 },
                 cont_no: {
                     required: "Please enter your contact number.",
-                    minlength: "Contact number should be at least 10 characters long.",
+                    minlength: "Contact number should be at least 11 characters long.",
                     digits: "Please enter only digits."
-                }
+                },
+                password: {
+                required: "Please enter a password.",
+                minlength: "Your password must be at least 8 characters long."
+            },
+            confirm_password: {
+                required: "Please confirm your password.",
+                minlength: "Your confirm password must also be at least 8 characters long.",
+                passwordMatch: "The passwords do not match. Please try again."
+            }
             }
         });
 
         // Automatically add +63 to contact number
         $('#cont_no').on('input', function() {
             var inputVal = $(this).val();
+            var sanitized = inputVal.replace(/[^0-9]/g, '').substring(0, 11);
+    $(this).val(sanitized);
             if (inputVal.substring(0, 2) !== "09") {
                 $(this).val("09" + inputVal);
             }
