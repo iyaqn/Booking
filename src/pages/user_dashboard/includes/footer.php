@@ -16,6 +16,7 @@
               <li><a href="about.php">Our Location</a></li>
               <li><a href="about.php">About</a></li>
               <li><a href="about.php">Contact</a></li>
+              <li><a href="faq.php">FAQs</a></li>
             </ul>
           </div>
           <div class="col-md-3 mb-5 pr-md-5 contact-info">
@@ -31,8 +32,8 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
             
           <p class="col-md-6 text-right social">
-            <a href="https://www.facebook.com/villadelosreyesresort"><span class="fa fa-facebook"></span></a>
-            <a href="https://www.instagram.com/villadelosreyesresort/"><span class="fa fa-instagram"></span></a>
+            <a href="https://www.facebook.com/villadelosreyesresort" target="_blank"><span class="fa fa-facebook"></span></a>
+            <a href="https://www.instagram.com/villadelosreyesresort/" target="_blank"><span class="fa fa-instagram"></span></a>
           </p>
         </div>
       </div>
