@@ -22,8 +22,8 @@ include 'includes/navbar.php';
     </style>
 <body>
     <div style="margin-top: 250px;">
-<section class="bg-light py-3 py-md-5">
-  <div class="container">
+<section class="bg-light py-3 py-md-5" >
+  <div class="container" >
     <div class="row gy-5 gy-lg-0 align-items-lg-center">
       <div class="col-12 col-lg-6">
       <h2 class="h1 mb-3">How can we help you?</h2>
