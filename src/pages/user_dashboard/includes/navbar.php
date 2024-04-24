@@ -18,6 +18,8 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="about.php">About</a>
+                </li> <li class="nav-item">
+                    <a class="nav-link" href="faq.php">FAQs</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="viewfeedbacks.php">Feedbacks</a>

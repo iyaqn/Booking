@@ -193,8 +193,6 @@ if (isset($_GET['success'])) {
     <p>Villa Delos Reyes Private Resort and Events Place is committed to protecting the privacy and security of your personal information. This Privacy Policy describes how we collect, use, and disclose personal information when you visit our website or use our services. By signing up, we assume you have read and understand these policies and agree to them.</p>
     <ol>
        
-          
-      
         <li>
             <h3>Information We Collect</h3>
             <p>

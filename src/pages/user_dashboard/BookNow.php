@@ -33,6 +33,10 @@ if ($get_role != 'user') {
     line-height: 1.5;
     margin-top: 10px;
 }
+
+body {
+    background-image: url("VDRphoto.jpg");
+}
 </style>
 
 <body>
@@ -551,6 +555,10 @@ if ($get_role != 'user') {
 
     <!-- Include Bootstrap JS -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <?php
+    include 'includes/footer.php';
+    ?>
 </body>
 
 </html>
