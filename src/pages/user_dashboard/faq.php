@@ -27,7 +27,7 @@ include 'includes/navbar.php';
     <div class="row gy-5 gy-lg-0 align-items-lg-center">
       <div class="col-12 col-lg-6">
       <h2 class="h1 mb-3">How can we help you?</h2>
-            <p class="lead fs-4 text-secondary mb-5">We hope you have found an answer to your question. If you need any help, please search your query on our Support Center or contact us via email.</p>
+            <p class="lead fs-4 text-secondary mb-5">We hope you have found an answer to your question. If you need any help, please contact us via email or via our facebook page.</p>
       </div>
       <div class="col-12 col-lg-6">
         <div class="row justify-content-xl-end">
