@@ -8,6 +8,7 @@ $session = new session();
 include 'includes/header.php';
 include 'includes/navbar.php';
 ?>
+<title> Offers </title>
 <style>
 h1,
 h3 {
@@ -80,9 +81,8 @@ p {
 }
 </style>
 
-<h1> </h1>
-<h3> </h3>
-<div class="image-container mt-5">
+<div  style="background-image: url('../../../up.jpg'); background-size: cover;">
+<div class="image-container mt-5 ">
     <img src="../../../package.jpg" alt="Image">
     <div class="hover-tab">
         <p>
@@ -112,7 +112,6 @@ p {
     </div>
 </div>
 <br>
-<h3> Event Packages </h3>
 <div class="image-container">
     <img src="../../../package2.jpg" alt="Image">
     <div class="hover-tab">
@@ -126,38 +125,8 @@ p {
         </p>
     </div>
 </div>
-<!-- ======= FOOTER ======= -->
-<!-- <footer class="footer">
-    <div class="checkbox-container-footer">
-
-       CONTACT DETAILS 
-       LINK TO 
-       NAMES
-       SOCIAL MEDIA BUTTON
-    </div>
-</footer> -->
-
-<!--BOOKING MODAL-->
-<!--should always be at the last page-->
-<div class="bg-modal">
-    <div class="modal-contents">
-
-        <div class="close">x</div>
-
-        <div class="Date_container">
-            <h2>Enter Date: </h2>
-            <form action="booking1.php" method="POST">
-                <input type="date" name="start_date" id="start_date" min="<?php echo date("Y-m-d"); ?>" required>
-                <br><br>
-                <input type="date" name="end_date" id="end_date" required>
-                <br><br>
-                <button type="submit" value="submit">Proceed</button>
-            </form>
-        </div>
-
-        </br>
-    </div>
 </div>
+
 
 
 <!--JS RESOURCE-->
@@ -171,7 +140,9 @@ document.getElementById('start_date').addEventListener('input', function() {
 
 </div>
 </div>
-
+<?php 
+include 'includes/footer.php';
+?>
 </body>
 
 </html>

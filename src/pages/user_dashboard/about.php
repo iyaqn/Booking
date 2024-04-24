@@ -8,6 +8,7 @@ $session = new session();
 include 'includes/header.php';
 include 'includes/navbar.php';
 ?>
+<title>About</title>
 
 <style>
         /* CSS for the About page */
@@ -15,7 +16,7 @@ include 'includes/navbar.php';
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-image: url("pool side.jpg");
+            background-image: url("../../../pool\ side.jpg");
             background-size: cover;
         }
 
@@ -59,8 +60,9 @@ include 'includes/navbar.php';
         
         <div class="containerr">
         <h1>About</h1>
-        <p>Welcome to a luxurious hotel located in a beautiful destination. Our hotel offers top-notch amenities and
-            services to ensure an unforgettable stay for our guests.</p>
+        <p>
+        
+            Located at Barangay Pinagbarilan, Baliuag, Bulacan, Villa Delos Reyes Private Resort and Events Place offers the whole resort for hosting big events while maintaining a relaxing environment where you and your loved ones can have wonderful memories together.</p>
 
         <h2>Location</h2>
         <div class="map-container">
@@ -84,38 +86,7 @@ include 'includes/navbar.php';
         </div>
     </div>
     </div>
-    <!-- ======= FOOTER ======= -->
-    <!-- <footer class="footer">
-    <div class="checkbox-container-footer">
 
-       CONTACT DETAILS 
-       LINK TO 
-       NAMES
-       SOCIAL MEDIA BUTTON
-    </div>
-</footer> -->
-
-    <!--BOOKING MODAL-->
-    <!--should always be at the last page-->
-    <div class="bg-modal">
-        <div class="modal-contents">
-
-            <div class="close">x</div>
-
-            <div class="Date_container">
-                <h2>Enter Date: </h2>
-                <form action="booking1.php" method="POST">
-                    <input type="date" name="start_date" id="start_date" min="<?php echo date("Y-m-d"); ?>" required>
-                    <br><br>
-                    <input type="date" name="end_date" id="end_date" required>
-                    <br><br>
-                    <button type="submit" value="submit">Proceed</button>
-                </form>
-            </div>
-
-            </br>
-        </div>
-    </div>
 
 
     <!--JS RESOURCE-->
@@ -126,6 +97,10 @@ include 'includes/navbar.php';
     });
     </script>
     <script src="main.js"></script>
+
+    <?php 
+include 'includes/footer.php';
+?>
 </body>
 
 </html>
