@@ -1,3 +1,4 @@
+<title>Home</title>
 <section class="site-hero overlay" style="background-image: url(VDRphoto.jpg)">
       <div class="container">
         <div class="row site-hero-inner justify-content-center align-items-center">
