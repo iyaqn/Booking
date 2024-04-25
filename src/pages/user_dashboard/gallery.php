@@ -82,7 +82,7 @@ include 'includes/navbar.php';
         </div>
         <br>
         <div class="gallery-item">
-            <img src="../../../VDR photo.jpg" alt="Image 3" style="height: 100%; width: 100%;">
+            <img src="../../../VDRphoto.jpg" alt="Image 3" style="height: 100%; width: 100%;">
         </div>
         <div class="gallery-item">
             <img src="../../../room.jpg" alt="Image 3"style="height: 100%; width: 100%;">

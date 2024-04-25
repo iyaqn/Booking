@@ -65,6 +65,38 @@ include 'includes/navbar.php';
                   </div>
                 </div>
               </div>
+
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="headingFour">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                    FAQs
+                  </button>
+                </h2>
+                <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+                  <div class="accordion-body">
+                  <dl>
+                    <dt> Where are you located? </dt>
+                    <dd> Pinagbarilan, Baliuag, Bulacan
+                        Search for Villa Delos Reyes Resort in Waze and Google Maps Landmark: In front of Shiela's Hardware</dd>
+                        <dt> How to place a booking? </dt>
+                    <dd> You can book <a href="BookNow.php">here</a>. <br>
+                    You may view the available slots and choose your preferred package and schedule. <br>
+                    Your booking will only be confirmed once your details and proof of payment (50% downpayment) are sent. You will receive an email from us for confirmation.</dd>
+                    <dt> What are the accepted payment methods? </dt>
+                    <dd> Cash (walk-in), Bank Transfer, and GCash. <br>
+                    Bank transfer details will be provided once you have shared the necessary details.</dd>
+                    <dt>How many can you accommodate? </dt>
+                    <dd>50 pax (Day Stay) <br>
+30 pax (rooms can accommodate) <br>
+Local community guidelines are always observed. </dd>
+                  </dl>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+
+
               <div class="accordion-item">
                 <h2 class="accordion-header" id="headingTwo">
                   <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
