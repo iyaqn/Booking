@@ -20,6 +20,7 @@ if (isset($_GET['success'])) {
     <title>Join Villa Delos Reyes!</title>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all. css"
         integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhnd0JK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
     <link href="../loginpage.css" rel="stylesheet" />
     <style>
     .container {
@@ -162,6 +163,25 @@ if (isset($_GET['success'])) {
   cursor: pointer;
 }
 
+.password-container {
+    position: relative;
+    width: 100%;
+    max-width: 500px; /* or any other suitable width */
+}
+
+.password-container input[type="password"] {
+    width: 100%;
+    padding-right: 30px; /* space for the icon */
+}
+
+.password-toggle {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
 
     </style>
 </head>
@@ -177,10 +197,16 @@ if (isset($_GET['success'])) {
                 <input type="text" id="address" name="address" required placeholder="Address" />
                 <input type="email" id="email" name="email" required="required" placeholder="Email" />
                 <input type="tel" id="cont_no" name="cont_no" required="required" placeholder="Contact Number" />
-                <input type="password" id="password" name="password" required="required" placeholder="Password" />
+                <div class="password-container">
+                    <input type="password" id="password" name="password" placeholder="Password" required="required">
+                    <i class="fas fa-eye password-toggle" onclick="togglePasswordVisibility('password', this)"></i>
+                </div>
                 <span id="message"></span>
-                <input type="password" id="confirm_password" name="confirm_password" required="required"
+                <div class="password-container">
+                    <input type="password" id="confirm_password" name="confirm_password" required="required" 
                     placeholder="Confirm Password" />
+                    <i class="fas fa-eye password-toggle" onclick="togglePasswordVisibility('confirm_password', this)"></i>
+                </div>
                 <button type="submit">Sign Up</button>
                 <a href="#" id="termsLink">Terms and Conditions</a>
                 <a href="#" id="privacyPolicyLink">Privacy Policy</a>
@@ -376,7 +402,10 @@ if (isset($_GET['success'])) {
             <form id="login-form" method="post" action="login-process.php">
                 <h1>Sign in</h1>
                 <input type="email" id="signin_email" name="email" placeholder="Email" />
-                <input type="password" id="signin_password" name="password" placeholder="Password" />
+                <div class="password-container">
+                    <input type="password" id="signin_password" name="password" placeholder="Password" required="required">
+                    <i class="fas fa-eye password-toggle" onclick="togglePasswordVisibility('signin_password', this)"></i>
+                </div>
                 <a href="forgot-password.php">Forgot your password?</a>
                 <button type="submit">Sign In</button>
                 <!-- Admin login -->
@@ -465,6 +494,19 @@ window.onclick = function(event) {
     </script>
     <script src="../script.js"></script>
     <script>
+   function togglePasswordVisibility(passwordFieldId, icon) {
+    var input = document.getElementById(passwordFieldId);
+    if (input.type === "password") {
+        input.type = "text";
+        icon.classList.remove('fa-eye-slash');
+        icon.classList.add('fa-eye');
+    } else {
+        input.type = "password";
+        icon.classList.remove('fa-eye');
+        icon.classList.add('fa-eye-slash');
+    }
+}
+
     $(document).ready(function() {
         // password validation on sign up
         $('#password').keyup(function() {
@@ -493,6 +535,7 @@ window.onclick = function(event) {
         $.validator.addMethod("lettersWithSpaceOnly", function(value, element) {
     return this.optional(element) || /^[a-zA-Z\s]+$/.test(value);
 }, "Please enter letters and spaces only.");
+
 
 
         $('#signup').validate({
