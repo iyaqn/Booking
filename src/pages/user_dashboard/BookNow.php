@@ -324,57 +324,70 @@ body {
 
     <script>
     $(document).ready(function() {
-        $.ajax({
-            url: 'controllers/getReservations.php',
-            type: 'GET',
-            success: function(res) {
-                var data = JSON.parse(res);
-                var events = [];
-                data.forEach(function(d) {
-                    events.push({
-                        title: 'Reserved',
-                        start: d.CheckInDate,
-                        end: d.CheckOutDate,
-                        color: 'red'
-                    });
-                });
-                var calendarEl = document.getElementById('calendar');
-                var calendar = new FullCalendar.Calendar(calendarEl, {
-                    initialView: 'dayGridMonth',
-                    headerToolbar: {
-                        left: 'prev,next today',
-                        center: 'title',
-                        right: 'dayGridMonth,timeGridWeek,timeGridDay'
-                    },
-                    events: events,
-                    dateClick: function(info) {
-                        var selectedDate = new Date(info.dateStr);
-                        var currentDate = new Date();
-                        currentDate.setHours(0, 0, 0, 0);
-
-                        if (selectedDate <= currentDate) {
-                            alert('You cannot reserve on a past or today\'s date.');
-                        } else {
-                            // Check if the selected date has a reservation
-                            var hasReservation = events.some(function(event) {
-                                return event.start === info.dateStr;
-                            });
-
-                            if (hasReservation) {
-                                alert('There is already a reservation on this date.');
-                            } else {
-                                $('#selectedDate').text(info.dateStr);
-                                $('#selectpackage').modal('show');
-                            }
-                        }
-                    },
-                    eventClick: function(info) {
-                        alert('Event: ' + info.event.title);
-                    }
-                });
-                calendar.render();
-            }
+        function isDatePending(dateStr, events) {
+        return events.some(function(event) {
+            return event.start === dateStr && event.title === 'Pending';
         });
+    }
+
+        $.ajax({
+        url: 'controllers/getReservations.php',
+        type: 'GET',
+        success: function(res) {
+            var data = JSON.parse(res);
+            var events = [];
+
+            data.forEach(function(booking) {
+                var statusColor = booking.status === 'pending' ? 'orange' : 'red';
+
+                events.push({
+                    title: booking.status === 'pending' ? 'Pending' : 'Reserved',
+                    start: booking.CheckInDate,
+                    end: booking.CheckOutDate,
+                    color: statusColor
+                });
+            });
+
+            var calendarEl = document.getElementById('calendar');
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'dayGridMonth',
+                headerToolbar: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'dayGridMonth,timeGridWeek,timeGridDay'
+                },
+                events: events,
+                eventClick: function(info) {
+                    alert('Event: ' + info.event.title);
+                }
+            });
+
+            calendar.render();
+
+            // Date click event handler
+            calendar.on('dateClick', function(info) {
+                var selectedDate = new Date(info.dateStr);
+                var currentDate = new Date();
+                currentDate.setHours(0, 0, 0, 0);
+
+                if (selectedDate <= currentDate) {
+                    alert('You cannot reserve on a past or today\'s date.');
+                } else {
+                    var dateStr = info.dateStr;
+
+                    // Check if the selected date is pending
+                    if (isDatePending(dateStr, events)) {
+                        alert('This date is currently pending for reservations. Please choose another date.');
+                    } else {
+                        $('#selectedDate').text(dateStr);
+                        $('#selectpackage').modal('show');
+                    }
+                }
+            });
+        }
+    });
+            }
+        );
 
         $('#policies').hide();
         $('#payment').hide();
@@ -533,7 +546,9 @@ body {
                 }
             });
         });
-    });
+    ;
+
+    
     </script>
 
     <!-- Include Bootstrap JS -->
