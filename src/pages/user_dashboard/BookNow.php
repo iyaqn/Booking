@@ -560,16 +560,14 @@ body {
         $('input[required]').each(function() {
             if ($(this).val() === '') {
                 isValid = false;
-                return false; // Exit the loop early
+                return false; 
             }
         });
         
         if (!isValid) {
-            // Display a message or highlight the required fields
             return;
         }
 
-        // Proceed with submitting payment
     });
 });
 </script>
