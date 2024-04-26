@@ -4,13 +4,14 @@ if (isset($_GET['reservation'])) {
     echo "<script>alert('$response')</script>";
 }
 
+
+
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
-    <meta charset="utf-8">
+<meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
@@ -30,12 +31,12 @@ if (isset($_GET['reservation'])) {
     <link rel="stylesheet" href="https://cdn.datatables.net/2.0.2/css/dataTables.dataTables.css" />
 
 </head>
-
+<body>
 <body id="page-top">
     <!-- Page Wrapper -->
     <div id="wrapper">
-<!-- Sidebar -->
-<ul class="navbar-nav bg-gradient-secondary sidebar sidebar-dark accordion" id="accordionSidebar">
+        <!-- Sidebar -->
+        <ul class="navbar-nav bg-gradient-secondary sidebar sidebar-dark accordion" id="accordionSidebar">
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
                 <div class="sidebar-brand-icon rotate-n-15">
@@ -43,14 +44,24 @@ if (isset($_GET['reservation'])) {
                 </div>
                 <div class="sidebar-brand-text mx-3">Admin Dashboard</div>
             </a>
-            <!-- Divider -->
-            <hr class="sidebar-divider my-0">
-            <!-- Nav Item - Dashboard -->
-            <li class="nav-item active">
-                <a class="nav-link" href="index.php">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Dashboard</span></a>
-            </li>
+            <hr class="sidebar-divider">
+            <div class="sidebar-heading">
+        Reservations
+    </div>
+                <!-- Nav Item - Confirmed Reservations -->
+    <li class="nav-item">
+        <a class="nav-link" href="dashboard.php">
+            <i class="fas fa-check-circle"></i>
+            <span>Confirmed Reservations</span>
+        </a>
+    </li>
+    <!-- Nav Item - Pending Reservations -->
+    <li class="nav-item">
+        <a class="nav-link" href="pending_reservations.php">
+            <i class="fas fa-exclamation-circle"></i>
+            <span>Pending Reservations</span>
+        </a>
+    </li>
 
             <!-- Divider -->
             <hr class="sidebar-divider">
@@ -70,24 +81,7 @@ if (isset($_GET['reservation'])) {
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Feedback</span></a>
             </div>
-            <hr class="sidebar-divider">
-            <div class="sidebar-heading">
-        Reservations
-    </div>
-                <!-- Nav Item - Confirmed Reservations -->
-    <li class="nav-item">
-        <a class="nav-link" href="confirmed_reservations.php">
-            <i class="fas fa-check-circle"></i>
-            <span>Confirmed Reservations</span>
-        </a>
-    </li>
-    <!-- Nav Item - Pending Reservations -->
-    <li class="nav-item">
-        <a class="nav-link" href="pending_reservations.php">
-            <i class="fas fa-exclamation-circle"></i>
-            <span>Pending Reservations</span>
-        </a>
-    </li>
+
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
@@ -227,7 +221,144 @@ if (isset($_GET['reservation'])) {
         </div>
     </div>
 </div>
-                  
+   <div class="row">
+                        <div class="col-md-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5 class="card-title">Confirmed Reservation List</h5>
+                                </div>
+                                <div class="card-body">
+                                    <table id="reservationlist" class="display" style="width:100%">
+                                        <thead>
+                                            <tr>
+
+                                            </tr>
+                                        </thead>
+                                        <tbody></tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                                <!-- modal for generating report -->
+            <div class="modal fade" id="generateReportModal" tabindex="-1" role="dialog"
+                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Generate Report</h5>
+                            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form action="../../generate-report.php" method="POST">
+                                <div class="form-group">
+                                    <label for="reportType">Select Report Type</label>
+                                    <select class="form-control" id="reportType" name="reportType">
+                                        <option value="guests">All Guests</option>
+                                        <option value="reservations">All Reservations</option>
+                                        <option value="payments">All Payments</option>
+                                    </select>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Generate Report</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End of Main Content -->
+
+            <!-- Footer -->
+            <footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span>Copyright &copy; Villa Delos Reyes Private Resort and Events Place 2021</span>
+                    </div>
+                </div>
+            </footer>
+            <!-- End of Footer -->
+
+        </div>
+        <!-- End of Content Wrapper -->
+
+    </div>
+    <!-- End of Page Wrapper -->
+
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+
+    <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-primary" href="../../logout.php">Logout</a>
+                </div>w
+            </div>
+        </div>
+    </div>
+
+    <!-- Details modal -->
+    <div class="modal fade" id="detailsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Reservation Details</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="reservationID">Reservation ID</label>
+                                <input type="text" class="form-control" id="reservationID" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label for="guestName">Guest Name</label>
+                                <input type="text" class="form-control" id="guestName" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label for="guestEmail">Guest Email</label>
+                                <input type="text" class="form-control" id="guestEmail" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label for="guestContact">Guest Contact</label>
+                                <input type="text" class="form-control" id="guestContact" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label for="selectedDate">Selected Date</label>
+                                <input type="text" class="form-control" id="selectedDate" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label for="selectedPackage">Selected Package</label>
+                                <input type="text" class="form-control" id="selectedPackage" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label for="totalPaid">Total Paid</label>
+                                <input type="text" class="form-control" id="totalPaid" readonly>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Bootstrap core JavaScript-->
     <script src="../../../vendor/jquery/jquery.min.js"></script>
     <script src="https://cdn.datatables.net/2.0.2/js/dataTables.js"></script>
@@ -245,8 +376,7 @@ if (isset($_GET['reservation'])) {
     <!-- Page level custom scripts -->
     <script src="../../../js/demo/chart-area-demo.js"></script>
     <script src="../../../js/demo/chart-pie-demo.js"></script>
-    <script src="scripts/dashboard.js"></script>                 
-
+    <script src="scripts/dashboard.js"></script>
+                  
 </body>
-
 </html>

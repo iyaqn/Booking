@@ -11,7 +11,7 @@ class Reservations
 
     public function getReservations()
     {
-        $query = "SELECT * FROM reservations where status = 'approved'";
+        $query = "SELECT * FROM reservations WHERE status IN ('pending', 'approved')";
         $result = $this->conn->query($query);
         $reservations = [];
         while ($row = $result->fetch_assoc()) {
