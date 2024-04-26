@@ -30,7 +30,7 @@
     </section>
     <!-- END section -->
 
-    <section class="section visit-section">
+    <section class="section visit-section white">
       <div class="container">
         <div class="row">
           <div class="col-md-12">

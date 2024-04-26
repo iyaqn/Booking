@@ -8,8 +8,6 @@ include 'includes/header.php';
 include 'includes/navbar.php';
 ?>
 
-
-
 <body>
     <div class="feedback-box">
         <h1>Feedback Form</h1>
@@ -29,7 +27,7 @@ include 'includes/navbar.php';
             <input type="submit" value="Submit" id="input-feed-btt">
         </form>
     </div>
-    
+
 </body>
 
 </html>

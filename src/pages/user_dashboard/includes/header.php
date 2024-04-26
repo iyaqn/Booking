@@ -37,10 +37,10 @@
     <!-- Bootstrap cdn -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+        
         <style>
-
-body {
-  background: #fff;
+        body {
+          background-image: url("../../../VDRphoto.jpg");
   font-family: "Mukta Mahee", arial, sans-serif;
   font-weight: 200;
   font-size: 16px;
@@ -48,6 +48,14 @@ body {
   color: #6c757d;
 }
 
+.white {
+  background-color: #fff;
+  font-family: "Mukta Mahee", arial, sans-serif;
+  font-weight: 200;
+  font-size: 16px;
+  line-height: 1.8;
+  color: #6c757d;
+}
 ::-moz-selection {
   color: #fff;
   background: #e61c5d;
