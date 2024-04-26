@@ -44,14 +44,24 @@ if (isset($_GET['reservation'])) {
                 </div>
                 <div class="sidebar-brand-text mx-3">Admin Dashboard</div>
             </a>
-            <!-- Divider -->
-            <hr class="sidebar-divider my-0">
-            <!-- Nav Item - Dashboard -->
-            <li class="nav-item active">
-                <a class="nav-link" href="index.php">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Dashboard</span></a>
-            </li>
+            <hr class="sidebar-divider">
+            <div class="sidebar-heading">
+        Reservations
+    </div>
+                <!-- Nav Item - Confirmed Reservations -->
+    <li class="nav-item">
+        <a class="nav-link" href="dashboard.php">
+            <i class="fas fa-check-circle"></i>
+            <span>Confirmed Reservations</span>
+        </a>
+    </li>
+    <!-- Nav Item - Pending Reservations -->
+    <li class="nav-item">
+        <a class="nav-link" href="pending_reservations.php">
+            <i class="fas fa-exclamation-circle"></i>
+            <span>Pending Reservations</span>
+        </a>
+    </li>
 
             <!-- Divider -->
             <hr class="sidebar-divider">
@@ -71,24 +81,7 @@ if (isset($_GET['reservation'])) {
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Feedback</span></a>
             </div>
-            <hr class="sidebar-divider">
-            <div class="sidebar-heading">
-        Reservations
-    </div>
-                <!-- Nav Item - Confirmed Reservations -->
-    <li class="nav-item">
-        <a class="nav-link" href="confirmed_reservations.php">
-            <i class="fas fa-check-circle"></i>
-            <span>Confirmed Reservations</span>
-        </a>
-    </li>
-    <!-- Nav Item - Pending Reservations -->
-    <li class="nav-item">
-        <a class="nav-link" href="pending_reservations.php">
-            <i class="fas fa-exclamation-circle"></i>
-            <span>Pending Reservations</span>
-        </a>
-    </li>
+
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
@@ -100,6 +93,7 @@ if (isset($_GET['reservation'])) {
 
         </ul>
         <!-- End of Sidebar -->
+
 
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
