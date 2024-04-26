@@ -253,19 +253,19 @@ body {
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="proofOfPayment">Proof of Payment:</label>
-                                <input type="file" class="form-control" id="proofOfPayment">
+                                <input type="file" class="form-control" id="proofOfPayment" required>
                             </div>
                             <div class="form-group">
                                 <label for="sender">Name of Sender:</label>
-                                <input type="text" class="form-control" id="sender">
+                                <input type="text" class="form-control" id="sender" required> 
                             </div>
                             <div class="form-group">
                                 <label for="referenceNumber">Reference Number:</label>
-                                <input type="text" class="form-control" id="referenceNumber">
+                                <input type="text" class="form-control" id="referenceNumber" required>
                             </div>
                             <div class="form-group">
                                 <label for="dateSent">Date Sent:</label>
-                                <input type="date" class="form-control" id="dateSent">
+                                <input type="date" class="form-control" id="dateSent" required>
                             </div>
                         </div>
                     </div>
@@ -538,7 +538,41 @@ body {
 
     <!-- Include Bootstrap JS -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script> $(document).ready(function() {
+    // Disable Submit Payment button initially
+    $('#submitPayment').prop('disabled', true);
 
+    // Enable Submit Payment button when all required fields are filled
+    $('#paymentModal').on('change', 'input[required]', function() {
+        var isValid = true;
+        $('input[required]').each(function() {
+            if ($(this).val() === '') {
+                isValid = false;
+                return false; // Exit the loop early
+            }
+        });
+        $('#submitPayment').prop('disabled', !isValid);
+    });
+
+    // Validation on Submit Payment button click
+    $('#paymentModal').on('click', '#submitPayment', function() {
+        var isValid = true;
+        $('input[required]').each(function() {
+            if ($(this).val() === '') {
+                isValid = false;
+                return false; // Exit the loop early
+            }
+        });
+        
+        if (!isValid) {
+            // Display a message or highlight the required fields
+            return;
+        }
+
+        // Proceed with submitting payment
+    });
+});
+</script>
     <?php
     include 'includes/footer.php';
     ?>
