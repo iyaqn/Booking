@@ -230,6 +230,7 @@
 
     </div>
     <!-- End of Page Wrapper -->
+    
 
     <!-- Scroll to Top Button-->
     <a class="scroll-to-top rounded" href="#page-top">
@@ -297,6 +298,19 @@
             </div>
         </div>
     </div>
+
+    <script>
+    // Check if there is an error query parameter in the URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const error = urlParams.get('error');
+
+    // If error is present and it indicates package deletion not permitted
+    if (error === 'package_not_permitted') {
+        // Show alert message
+        alert('This package cannot be deleted.');
+    }
+</script>
+
 
     <!-- Bootstrap core JavaScript-->
     <script src="../../../vendor/jquery/jquery.min.js"></script>
