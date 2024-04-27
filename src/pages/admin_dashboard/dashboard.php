@@ -32,6 +32,7 @@ $conn = $db->getConnection();
     <!-- Custom styles for this template-->
     <link href="../../../css/sb-admin-2.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.datatables.net/2.0.2/css/dataTables.dataTables.css" />
+    
 </head>
 <body>
 <body id="page-top">
@@ -133,21 +134,41 @@ $conn = $db->getConnection();
                                     Notifications
                                 </h6>
                                 <!-- Notification items will be added dynamically here using JavaScript -->
+                              
                                 <?php
                                     foreach($notifications as $notification) {
                                         switch ($notification['type']) {
                                             case "feedback":
                                                 echo '
-                                                    <div id="notificationItems">A new feedback has been sent!</div>
+                                                <a class="dropdown-item d-flex align-items-center" href="#">
+                                                <div class="mr-3">
+                                                    <div class="icon-circle bg-primary">
+                                                        <i class="fas fa-file-alt text-white"></i>
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <span class="font-weight-bold">A new feedback has been sent!</span>
+                                                </div>
+                                            </a>
                                                 ';
                                                 break;
                                             case "new reservation":
                                                 echo '
-                                                    <div id="notificationItems">A new reservation has been made!</div>
+                                                <a class="dropdown-item d-flex align-items-center" href="#">
+                                                <div class="mr-3">
+                                                    <div class="icon-circle bg-primary">
+                                                        <i class="fas fa-file-alt text-white"></i>
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <span class="font-weight-bold">A new reservation has been made!</span>
+                                                </div>
+                                            </a>
                                                 ';
                                         }
                                     }
                                 ?>
+                                
                                 <a class="dropdown-item text-center small text-gray-500" href="#">Show All Notifications</a>
                             </div>
                         </li>
@@ -412,6 +433,34 @@ $conn = $db->getConnection();
     <script src="../../../js/demo/chart-area-demo.js"></script>
     <script src="../../../js/demo/chart-pie-demo.js"></script>
     <script src="scripts/dashboard.js"></script>
-                  
+
+    <!-- Your custom script -->
+    <script>
+    $(document).ready(function() {
+        // Add event listener to notifications tab link
+        $('#notificationsDropdown').click(function() {
+            // Hide the badge
+            $('#notificationCounter').hide();
+            
+            // Trigger AJAX request to mark all notifications as read
+            $.ajax({
+                url: 'mark_notifications_as_read.php',
+                type: 'GET',
+                success: function(response) {
+                    // Reload the notifications dropdown menu
+                    $('#notificationsMenu').load(location.href + ' #notificationsMenu', function() {
+                        // Check if there are notifications after reload
+                        var notificationsCount = $('#notificationsMenu').find('.dropdown-item').length;
+                        if (notificationsCount > 0) {
+                            // If there are notifications, show the badge
+                            $('#notificationCounter').text(notificationsCount).show();
+                        }
+                    });
+                }
+            });
+        });
+    });
+</script>
+
 </body>
 </html>

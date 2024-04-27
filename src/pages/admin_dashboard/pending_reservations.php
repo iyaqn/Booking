@@ -111,8 +111,65 @@ if (isset($_GET['reservation'])) {
 
                     <!-- Topbar Search -->
 
-                    <!-- Topbar Navbar -->
-                    <ul class="navbar-nav ml-auto">
+                                       <!-- Topbar Navbar -->
+                                       <ul class="navbar-nav ml-auto">
+                        <!-- notification button and list -->
+                        <?php
+                            $notificationObj = new Notifications(2, $conn);
+                            $notifications = $notificationObj->getNotifications();
+                        ?>
+                        <li class="nav-item dropdown no-arrow">
+                            <a class="nav-link dropdown-toggle" href="#" id="notificationsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-bell fa-fw"></i>
+                                <!-- Counter - Notifications -->
+                                <span id="notificationCounter" class="badge badge-danger badge-counter">
+                                    <?php echo count($notifications); ?>
+                                </span>
+                            </a>
+                            <!-- Dropdown - Notifications -->
+                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="notificationsDropdown" id="notificationsMenu">
+                                <h6 class="dropdown-header">
+                                    Notifications
+                                </h6>
+                                <!-- Notification items will be added dynamically here using JavaScript -->
+                              
+                                <?php
+                                    foreach($notifications as $notification) {
+                                        switch ($notification['type']) {
+                                            case "feedback":
+                                                echo '
+                                                <a class="dropdown-item d-flex align-items-center" href="#">
+                                                <div class="mr-3">
+                                                    <div class="icon-circle bg-primary">
+                                                        <i class="fas fa-file-alt text-white"></i>
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <span class="font-weight-bold">A new feedback has been sent!</span>
+                                                </div>
+                                            </a>
+                                                ';
+                                                break;
+                                            case "new reservation":
+                                                echo '
+                                                <a class="dropdown-item d-flex align-items-center" href="#">
+                                                <div class="mr-3">
+                                                    <div class="icon-circle bg-primary">
+                                                        <i class="fas fa-file-alt text-white"></i>
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <span class="font-weight-bold">A new reservation has been made!</span>
+                                                </div>
+                                            </a>
+                                                ';
+                                        }
+                                    }
+                                ?>
+                                
+                                <a class="dropdown-item text-center small text-gray-500" href="#">Show All Notifications</a>
+                            </div>
+                        </li>
                         <!-- Logout button here -->
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"

@@ -32,4 +32,10 @@ class Notifications {
         $query = "UPDATE notifications SET read_at = '".date('Y-m-d H:i:s')."' WHERE id = ".$notificationID;
         $this->conn->query($query);
     }
+
+    public function markAllAsRead() {
+        $query = "UPDATE notifications SET read_at = '".date('Y-m-d H:i:s')."' WHERE read_at IS NULL";
+        $this->conn->query($query);
+    }
+    
 }

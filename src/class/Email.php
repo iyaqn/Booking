@@ -30,14 +30,14 @@ class Email
             $mail->SMTPSecure = 'tls';
             $mail->Host = 'smtp.gmail.com';
             $mail->Port = 587;
-            $mail->Username = 'officialnexuslink@gmail.com';
-            $mail->Password = 'ypqsfuzaqdgwndjx';
+            $mail->Username = 'iyuhqn@gmail.com';
+            $mail->Password = 'ceyp juah avwz vuun            ';
             $mail->isHTML(true);
 
             // Recipients
-            $mail->setFrom('villadelosreyesresort@gmail.com', 'Villa De Los Reyes Resort');
+            $mail->setFrom('villadelosreyesresort@gmail.com', 'Villa Delos Reyes Private Resort and Events Place');
             $mail->addAddress($to);
-            $mail->addReplyTo('officialnexuslink@gmail.com', 'Villa De Los Reyes Resort');
+            $mail->addReplyTo('iyuhqn@gmail.com', 'Villa Delos Reyes Private Resort and Events Place');
 
             // Generate notification message using template
             $mail->Subject = $subject;
