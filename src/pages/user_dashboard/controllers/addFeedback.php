@@ -13,6 +13,9 @@ $feedback = new Feedback($conn);
 
 $submitFeedback = $feedback->submitFeedback($feedbackText, $GuestID);
 
+$notification = new Notifications(0, $conn);
+$notification->addNotification($GuestID);
+
 if ($submitFeedback) {
     header('Location: ../../user_dashboard/viewfeedbacks.php');
 } else {

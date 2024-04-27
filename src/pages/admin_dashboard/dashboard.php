@@ -1,17 +1,20 @@
 <?php
+include '../../includes/autoloader.php';
+
 if (isset($_GET['reservation'])) {
     $response = $_GET['reservation'];
     echo "<script>alert('$response')</script>";
 }
 
-
+$db = new Database();
+$conn = $db->getConnection();
 
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
@@ -29,7 +32,6 @@ if (isset($_GET['reservation'])) {
     <!-- Custom styles for this template-->
     <link href="../../../css/sb-admin-2.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.datatables.net/2.0.2/css/dataTables.dataTables.css" />
-
 </head>
 <body>
 <body id="page-top">
@@ -112,6 +114,43 @@ if (isset($_GET['reservation'])) {
 
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
+                        <!-- notification button and list -->
+                        <?php
+                            $notificationObj = new Notifications(2, $conn);
+                            $notifications = $notificationObj->getNotifications();
+                        ?>
+                        <li class="nav-item dropdown no-arrow">
+                            <a class="nav-link dropdown-toggle" href="#" id="notificationsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-bell fa-fw"></i>
+                                <!-- Counter - Notifications -->
+                                <span id="notificationCounter" class="badge badge-danger badge-counter">
+                                    <?php echo count($notifications); ?>
+                                </span>
+                            </a>
+                            <!-- Dropdown - Notifications -->
+                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="notificationsDropdown" id="notificationsMenu">
+                                <h6 class="dropdown-header">
+                                    Notifications
+                                </h6>
+                                <!-- Notification items will be added dynamically here using JavaScript -->
+                                <?php
+                                    foreach($notifications as $notification) {
+                                        switch ($notification['type']) {
+                                            case "feedback":
+                                                echo '
+                                                    <div id="notificationItems">A new feedback has been sent!</div>
+                                                ';
+                                                break;
+                                            case "new reservation":
+                                                echo '
+                                                    <div id="notificationItems">A new reservation has been made!</div>
+                                                ';
+                                        }
+                                    }
+                                ?>
+                                <a class="dropdown-item text-center small text-gray-500" href="#">Show All Notifications</a>
+                            </div>
+                        </li>
                         <!-- Logout button here -->
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
@@ -150,10 +189,6 @@ if (isset($_GET['reservation'])) {
                     <div class="row">
                         <div class="container">
                             <?php
-                            include '../../includes/autoloader.php';
-
-                            $db = new Database();
-                            $conn = $db->getConnection();
 
                             $reservations = new Reservations($conn);
                             $totalReservations = $reservations->getTotalReservations();
