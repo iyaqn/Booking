@@ -39,7 +39,25 @@ if ($error) {
         integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhnd0JK28anvf" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
     <link href="../loginpage.css" rel="stylesheet" />
+    
 </head>
+
+     <!-- Google reCAPTCHA CDN -->
+     <script src="https://www.google.com/recaptcha/api.js?render=sitekey"></script>
+     <!-- <script src= 
+        "https://www.google.com/recaptcha/api.js" async defer> 
+    </script>  -->
+    <script>
+function validateForm() {
+    var response = grecaptcha.getResponse();
+    if(response.length == 0) { 
+        // reCAPTCHA not verified
+        alert("Please complete the reCAPTCHA to proceed!");
+        return false;
+    }
+    return true;
+}
+</script>
 
 <style>
     .password-container {
@@ -66,7 +84,7 @@ if ($error) {
     <div class="container" id="container">
         <div class="form-container sign-in-container">
             <!-- Forgot Password -->
-            <form id="forgot-password-form" method="POST" action="reset-password-process.php">
+            <form id="forgot-password-form" method="POST" action="reset-password-process.php"  onsubmit="return validateForm()">
                 <h1>Reset your Password</h1>
                 <p>Enter your new password</p>
                 <div class="password-container">
@@ -80,6 +98,10 @@ if ($error) {
                     <i class="fas fa-eye password-toggle" onclick="togglePasswordVisibility('confirm_password', this)"></i>
                 </div>
                 <input type="hidden" name="token" value="<?php echo $token; ?>" />
+                        <!-- div to show reCAPTCHA -->
+            <div class="g-recaptcha" 
+                data-sitekey="6Lfcn8gpAAAAABcTHZLFEkD5utJwYG-hS0M0ui91"> 
+            </div> 
                 <button type="submit">Reset Password</button>
             </form>
         </div>

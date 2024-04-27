@@ -22,6 +22,23 @@ if (isset($_GET['success'])) {
         integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhnd0JK28anvf" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
     <link href="../loginpage.css" rel="stylesheet" />
+     <!-- Google reCAPTCHA CDN -->
+     <script src="https://www.google.com/recaptcha/api.js?render=yoursitekey"></script>
+     <!-- <script src= 
+        "https://www.google.com/recaptcha/api.js" async defer> 
+    </script>  -->
+    <script>
+function validateForm() {
+    var response = grecaptcha.getResponse();
+    if(response.length == 0) { 
+        // reCAPTCHA not verified
+        alert("Please complete the reCAPTCHA to proceed!");
+        return false;
+    }
+    return true;
+}
+</script>
+
     <style>
     .container {
         position: relative;
@@ -31,7 +48,7 @@ if (isset($_GET['success'])) {
         overflow: hidden;
         width: 1000px;
         max-width: 100%;
-        min-height: 600px;
+        min-height: 800px;
     }
 
     .form-container {
@@ -183,6 +200,7 @@ if (isset($_GET['success'])) {
 }
 
 
+
     </style>
 </head>
 
@@ -190,7 +208,7 @@ if (isset($_GET['success'])) {
     <div class="container" id="container">
         <div class="form-container sign-up-container">
             <!-- sign up -->
-            <form id="signup" method="POST" action="signup-process.php">
+            <form id="signup" method="POST" action="signup-process.php" onsubmit="return validateForm()">
                 <h1>Create Account</h1>
                 <input type="text" id="first_name" name="first_name" required="required" placeholder="First Name" />
                 <input type="text" id="last_name" name="last_name" required="required" placeholder="Last Name" />
@@ -207,6 +225,10 @@ if (isset($_GET['success'])) {
                     placeholder="Confirm Password" />
                     <i class="fas fa-eye password-toggle" onclick="togglePasswordVisibility('confirm_password', this)"></i>
                 </div>
+                    <!-- div to show reCAPTCHA -->
+            <div class="g-recaptcha" 
+                data-sitekey="6Lfcn8gpAAAAABcTHZLFEkD5utJwYG-hS0M0ui91"> 
+            </div> 
                 <button type="submit">Sign Up</button>
                 <a href="#" id="termsLink">Terms and Conditions</a>
                 <a href="#" id="privacyPolicyLink">Privacy Policy</a>
@@ -493,6 +515,27 @@ window.onclick = function(event) {
 
     </script>
     <script src="../script.js"></script>
+    <!-- recaptcha for v3 -->
+    <script>
+grecaptcha.ready(function() {
+    document.getElementById('signup-form').addEventListener('submit', function(event) {
+        event.preventDefault();
+        grecaptcha.execute('6Lfcn8gpAAAAABcTHZLFEkD5utJwYG-hS0M0ui91', {action: 'signup'}).then(function(token) {
+            // Add your token to your form
+            var form = document.getElementById('signup-form');
+            var hiddenInput = document.createElement('input');
+            hiddenInput.type = 'hidden';
+            hiddenInput.name = 'recaptcha_response';
+            hiddenInput.value = token;
+            form.appendChild(hiddenInput);
+
+            // Submit form
+            form.submit();
+        });
+    });
+});
+
+</script>
     <script>
    function togglePasswordVisibility(passwordFieldId, icon) {
     var input = document.getElementById(passwordFieldId);
@@ -507,25 +550,61 @@ window.onclick = function(event) {
     }
 }
 
-    $(document).ready(function() {
-        // password validation on sign up
-        $('#password').keyup(function() {
-            var password = $('#password').val();
-            var passwordLength = password.length;
-            var hasUppercase = /[A-Z]/.test(password);
-            var hasNumber = /\d/.test(password);
-            if (passwordLength >= 8 && hasUppercase && hasNumber) {
-                $('#message').text('');
-            } else {
-                $('#message').text(
-                        'Password needs atleast 8 characters with 1 number and atleast 1 uppercase')
-                    .css('color',
-                        'red');
+$(document).ready(function() {
+    // Variables for password and confirm password fields
+    var password = $("#password");
+    var confirm_password = $("#confirm_password");
+    var message = $("#message");
+
+    // Check Password Requirements and Match
+    function checkPassword() {
+        var passwordVal = password.val();
+        var confirmPasswordVal = confirm_password.val();
+        var passwordLength = passwordVal.length;
+        var hasUppercase = /[A-Z]/.test(passwordVal);
+        var hasNumber = /\d/.test(passwordVal);
+        
+        // Check complexity
+        if (passwordLength >= 8 && hasUppercase && hasNumber) {
+            message.css('color', 'green').text('Password is strong'); // Indicating the password is strong
+            // Check if passwords match
+            if (passwordVal === confirmPasswordVal && confirmPasswordVal !== '') {
+                message.text('Passwords match, you can proceed to sign up!').css('color', 'green');
+                $('button[type="submit"]').prop('disabled', false); // Enable the submit button if everything is ok
+            } else if (confirmPasswordVal !== '') {
+                message.text('Passwords do not match.').css('color', 'red');
+                $('button[type="submit"]').prop('disabled', true); // Disable submit button if passwords do not match
             }
-            $('#password').focusout(function() {
-                $('#message').text('');
-            });
-        });
+        } else {
+            // Detailed messages about what is missing
+            var messages = [];
+            if (passwordLength < 8) {
+                messages.push("at least 8 characters");
+            }
+            if (!hasUppercase) {
+                messages.push("1 uppercase letter");
+            }
+            if (!hasNumber) {
+                messages.push("1 number");
+            }
+            message.text('Password needs ' + messages.join(', ') + '.').css('color', 'red');
+            $('button[type="submit"]').prop('disabled', true); // Disable the submit button until requirements are met
+        }
+    }
+
+    // Event handlers for real-time validation feedback
+    password.keyup(checkPassword);
+    confirm_password.keyup(checkPassword);
+    password.focusout(function() {
+        if (confirm_password.val() === '') {
+            message.text(''); // Clear message when focus is lost and no input in confirm password
+        }
+    });
+    confirm_password.focusout(function() {
+        if (password.val() === '') {
+            message.text(''); // Clear message when focus is out and no input in password
+        }
+    });
 
         $.validator.addMethod("passwordMatch", function(value, element) {
         return $('#password').val() === $('#confirm_password').val();
@@ -588,7 +667,7 @@ window.onclick = function(event) {
             }
         });
 
-        // Automatically add +63 to contact number
+        // Automatically add 09 to contact number
         $('#cont_no').on('input', function() {
             var inputVal = $(this).val();
             var sanitized = inputVal.replace(/[^0-9]/g, '').substring(0, 11);
