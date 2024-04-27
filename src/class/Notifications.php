@@ -23,6 +23,22 @@ class Notifications {
         }
     }
 
+    public function getUnreadNotifications() {
+        $query = "SELECT * FROM notifications WHERE read_at IS NULL";
+        $result = $this->conn->query($query);
+
+        if ($result->num_rows > 0) {
+            $notifications = array();
+            while ($row = $result->fetch_assoc()) {
+                $notifications[] = $row;
+            }
+            return $notifications;
+        }
+        else {
+            return [];
+        }
+    }
+
     public function addNotification($GuestID) {
         $query = "INSERT INTO notifications(GuestID, type, created_at) VALUES('$GuestID', '".$this->notificationTypes[$this->type]."', '".date('Y-m-d H:i:s')."')";
         $this->conn->query($query);

@@ -1,10 +1,13 @@
 <?php
+include '../../includes/autoloader.php';
+
 if (isset($_GET['reservation'])) {
     $response = $_GET['reservation'];
     echo "<script>alert('$response')</script>";
 }
 
-
+$db = new Database();
+$conn = $db->getConnection();
 
 ?>
 
@@ -116,15 +119,21 @@ if (isset($_GET['reservation'])) {
                         <!-- notification button and list -->
                         <?php
                             $notificationObj = new Notifications(2, $conn);
-                            $notifications = $notificationObj->getNotifications();
+                            $notifications = $notificationObj->getUnreadNotifications();
                         ?>
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="notificationsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-bell fa-fw"></i>
                                 <!-- Counter - Notifications -->
-                                <span id="notificationCounter" class="badge badge-danger badge-counter">
-                                    <?php echo count($notifications); ?>
-                                </span>
+                                <?php
+                                    if (count($notifications) != 0 ) {
+                                ?>
+                                        <span id="notificationCounter" class="badge badge-danger badge-counter">
+                                            <?php echo count($notifications); ?>
+                                        </span>
+                                <?php
+                                    }
+                                ?>
                             </a>
                             <!-- Dropdown - Notifications -->
                             <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="notificationsDropdown" id="notificationsMenu">
@@ -208,10 +217,6 @@ if (isset($_GET['reservation'])) {
                     <div class="row">
                         <div class="container">
                             <?php
-                            include '../../includes/autoloader.php';
-
-                            $db = new Database();
-                            $conn = $db->getConnection();
 
                             $reservations = new Reservations($conn);
                             $totalReservations = $reservations->getTotalReservations();
@@ -438,6 +443,7 @@ if (isset($_GET['reservation'])) {
     <script src="../../../js/demo/chart-area-demo.js"></script>
     <script src="../../../js/demo/chart-pie-demo.js"></script>
     <script src="scripts/dashboard.js"></script>
+    <script src="scripts/notification.js"></script>
                   
 </body>
 </html>

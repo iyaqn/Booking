@@ -118,15 +118,21 @@ $conn = $db->getConnection();
                         <!-- notification button and list -->
                         <?php
                             $notificationObj = new Notifications(2, $conn);
-                            $notifications = $notificationObj->getNotifications();
+                            $notifications = $notificationObj->getUnreadNotifications();
                         ?>
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="notificationsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-bell fa-fw"></i>
                                 <!-- Counter - Notifications -->
-                                <span id="notificationCounter" class="badge badge-danger badge-counter">
-                                    <?php echo count($notifications); ?>
-                                </span>
+                                <?php
+                                    if (count($notifications) != 0 ) {
+                                ?>
+                                        <span id="notificationCounter" class="badge badge-danger badge-counter">
+                                            <?php echo count($notifications); ?>
+                                        </span>
+                                <?php
+                                    }
+                                ?>
                             </a>
                             <!-- Dropdown - Notifications -->
                             <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="notificationsDropdown" id="notificationsMenu">
@@ -435,32 +441,7 @@ $conn = $db->getConnection();
     <script src="scripts/dashboard.js"></script>
 
     <!-- Your custom script -->
-    <script>
-    $(document).ready(function() {
-        // Add event listener to notifications tab link
-        $('#notificationsDropdown').click(function() {
-            // Hide the badge
-            $('#notificationCounter').hide();
-            
-            // Trigger AJAX request to mark all notifications as read
-            $.ajax({
-                url: 'mark_notifications_as_read.php',
-                type: 'GET',
-                success: function(response) {
-                    // Reload the notifications dropdown menu
-                    $('#notificationsMenu').load(location.href + ' #notificationsMenu', function() {
-                        // Check if there are notifications after reload
-                        var notificationsCount = $('#notificationsMenu').find('.dropdown-item').length;
-                        if (notificationsCount > 0) {
-                            // If there are notifications, show the badge
-                            $('#notificationCounter').text(notificationsCount).show();
-                        }
-                    });
-                }
-            });
-        });
-    });
-</script>
+    <script src="scripts/notification.js"></script>
 
 </body>
 </html>
