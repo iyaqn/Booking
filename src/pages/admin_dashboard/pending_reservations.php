@@ -147,7 +147,7 @@ $conn = $db->getConnection();
                                         switch ($notification['type']) {
                                             case "feedback":
                                                 echo '
-                                                <a class="dropdown-item d-flex align-items-center" href="#">
+                                                <a class="dropdown-item d-flex align-items-center" href="feedback.php">
                                                 <div class="mr-3">
                                                     <div class="icon-circle bg-primary">
                                                         <i class="fas fa-file-alt text-white"></i>
@@ -161,7 +161,7 @@ $conn = $db->getConnection();
                                                 break;
                                             case "new reservation":
                                                 echo '
-                                                <a class="dropdown-item d-flex align-items-center" href="#">
+                                                <a class="dropdown-item d-flex align-items-center" href="pending_reservations.php">
                                                 <div class="mr-3">
                                                     <div class="icon-circle bg-primary">
                                                         <i class="fas fa-file-alt text-white"></i>
@@ -176,26 +176,17 @@ $conn = $db->getConnection();
                                     }
                                 ?>
                                 
-                                <a class="dropdown-item text-center small text-gray-500" href="#">Show All Notifications</a>
+                                
                             </div>
                         </li>
                         <!-- Logout button here -->
-                        <li class="nav-item dropdown no-arrow">
-                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Logout</span>
-                                <!-- Logout icon -->
-                                <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                            </a>
-                            <!-- Dropdown - User Information -->
-                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="../../logout.php">
-                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Logout
-                                </a>
-                            </div>
-                        </li>
+                        <li class="nav-item">
+                        <a class="nav-link" href="../../logout.php">
+                            <span class="mr-2 d-none d-lg-inline text-gray-600 small">Logout</span>
+                            <!-- Logout icon -->
+                            <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                        </a>
+                    </li>
                     </ul>
 
                 </nav>
