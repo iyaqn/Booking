@@ -5,6 +5,7 @@ include '../../../includes/conn.php';
 $connection = new conn();
 $connection = $connection->conn;
 
+date_default_timezone_set('Asia/Manila');
 // Check if form is submitted
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     try {
