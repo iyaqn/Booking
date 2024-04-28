@@ -93,12 +93,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                         <p>Thank you,</p>
                         <p><a href='mailto:vdrrep@gmail.com'>Villa Delos Reyes Resort</a></p>
                     </div>";
-                      // Existing code to send email to guest
-$email->sendEmail($to, $subject, $type, $htmlContent);
+
 
 $notification = new Notifications(1, $connection);
 $notification->addNotification($GuestId);
 
+                      // Existing code to send email to guest
+                      $email->sendEmail($to, $subject, $type, $htmlContent);
+                      
 if ($email) {
     echo json_encode(array("message" => "Payment submitted successfully. Email sent to user", "success" => true, "reservationID" => $reservationID));
 

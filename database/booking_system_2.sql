@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 28, 2024 at 08:15 AM
+-- Generation Time: Apr 26, 2024 at 06:58 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -72,10 +72,12 @@ CREATE TABLE `feedbacks` (
 --
 
 INSERT INTO `feedbacks` (`feedback_id`, `feedback`, `timestamp`, `GuestID`) VALUES
-(4, 'Good place.', '2024-04-13 04:26:17', 1),
-(5, 'Very peaceful and enjoyable resort!', '2024-04-26 17:08:27', 2),
-(6, 'Enjoyed my stay! Will come back again :)', '2024-04-26 17:16:51', 7),
-(7, 'My friends and i had fun!', '2024-04-26 17:16:51', 7);
+(4, 'eee', '2024-04-13 04:26:17', 1),
+(5, 'eeeeeeeeeee', '2024-04-26 17:08:27', 2),
+(6, 'wawdewa', '2024-04-26 17:16:51', 7),
+(7, 'aeddfd', '2024-04-26 17:16:51', 7),
+(8, 'dfgdf', '2024-04-26 17:17:11', 6),
+(9, 'fgdc', '2024-04-26 17:17:11', 1);
 
 -- --------------------------------------------------------
 
@@ -101,10 +103,9 @@ CREATE TABLE `guests` (
 INSERT INTO `guests` (`GuestID`, `FirstName`, `LastName`, `Email`, `Phone`, `Address`, `password`, `token`) VALUES
 (1, 'Rommel', 'Maningas', 'admin@gmail.com', '123132131', 'Purok 6', '123123', ''),
 (2, 'Rendel', 'Maningas', 'johnrendel87@gmail.com', '123132131', 'Purok 6', '123', ''),
-(5, 'Mary', 'Malagayo', '', NULL, 'Wangsheng Funeral Parlor', 'Sharina1', ''),
+(5, 'Mary', 'Malagayo', 'maryjulia.malagayo.cics@ust.edu.ph', '09990366218', 'Wangsheng Funeral Parlor', 'Sharina1', ''),
 (6, 'aaa aa', 'aaaa aa', 'jmalagayo4@gmail.com', '09123456789', 'Wangsheng Funeral Parlor', 'Pass1111', ''),
-(7, 'Mary', 'Malagayo', 'kittycatjulie35@gmail.com', '09099903662', 'Wangsheng Funeral Parlor', '1111QQQQ', ''),
-(8, 'Mary', 'Malagayo', NULL, '09990366212', 'Wangsheng Funeral Parlor', 'Q123456789', '');
+(7, 'Mary', 'Malagayo', 'kittycatjulie35@gmail.com', '09099903662', 'Wangsheng Funeral Parlor', '1111QQQQ', '');
 
 -- --------------------------------------------------------
 
@@ -118,31 +119,6 @@ CREATE TABLE `inclusions` (
   `description` varchar(255) DEFAULT NULL,
   `price` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `notifications`
---
-
-CREATE TABLE `notifications` (
-  `id` int(11) NOT NULL,
-  `GuestID` int(11) NOT NULL,
-  `type` varchar(255) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `read_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `notifications`
---
-
-INSERT INTO `notifications` (`id`, `GuestID`, `type`, `created_at`, `read_at`) VALUES
-(1, 1, 'feedback', '2024-04-28 06:15:33', NULL),
-(2, 2, '', '2024-04-28 06:15:35', NULL),
-(3, 1, 'new reservation', '2024-04-28 06:15:38', NULL),
-(4, 8, 'new reservation', '2024-04-27 19:19:25', '2024-04-27 13:19:25'),
-(5, 1, 'new reservation', '2024-04-28 06:10:43', '2024-04-28 00:10:43');
 
 -- --------------------------------------------------------
 
@@ -205,13 +181,7 @@ INSERT INTO `payments` (`PaymentID`, `ReservationID`, `AmountPaid`, `PaymentDate
 (44, 67, '12500.00', '2024-04-26 07:17:27', 'Screenshot 2024-01-03 142716.png', 'sdgy', 'sdfgh'),
 (45, 68, '9000.00', '2024-04-26 09:07:34', 'Screenshot (127).png', 'aaaa', '1223123'),
 (46, 69, '9000.00', '2024-04-26 10:05:33', 'Screenshot (248).png', 'aaaa', '`123'),
-(47, 70, '7500.00', '2024-04-26 10:22:47', 'Screenshot (275).png', 'aaaa', '1223123'),
-(48, 71, '7500.00', '2024-04-26 12:51:21', 'download (4).jpg', 'Julia Malagayo', '12345678'),
-(49, 72, '9000.00', '2024-04-27 06:06:47', 'Invalid file format. Only JPG, JPEG, PNG, and GIF are allowed.', 'aaaa', '1223123'),
-(50, 73, '7500.00', '2024-04-27 06:43:33', '1713505107558.png', 'aaaa aa', '1223123'),
-(51, 74, '9000.00', '2024-04-27 10:45:19', 'download (4).jpg', 'hiii', '0987654'),
-(52, 75, '9000.00', '2024-04-27 13:18:26', 'email.png', 'aaaa aa', '0987654'),
-(54, 77, '9000.00', '2024-04-28 00:08:21', 'download (4)_1.jpg', 'aaaaaaaaaaa aaa', '1223123');
+(47, 70, '7500.00', '2024-04-26 10:22:47', 'Screenshot (275).png', 'aaaa', '1223123');
 
 -- --------------------------------------------------------
 
@@ -250,7 +220,7 @@ INSERT INTO `reservations` (`ReservationID`, `GuestID`, `PackageID`, `CheckInDat
 (58, 1, 1, '2024-04-22', '2024-04-22', '15000.00', 'pending'),
 (59, 1, 2, '2024-04-19', '2024-04-19', '18000.00', 'declined'),
 (60, 1, 2, '2024-04-19', '2024-04-19', '18000.00', 'approved'),
-(61, 1, 3, '2024-04-27', '2024-04-27', '25000.00', 'cancelled'),
+(61, 1, 3, '2024-04-27', '2024-04-27', '25000.00', 'pending'),
 (62, 1, 3, '2024-04-19', '2024-04-19', '25000.00', 'declined'),
 (63, 1, 1, '2024-04-27', '2024-04-27', '15000.00', ''),
 (64, 5, 3, '2024-04-19', '2024-04-19', '25000.00', 'cancelled'),
@@ -259,13 +229,7 @@ INSERT INTO `reservations` (`ReservationID`, `GuestID`, `PackageID`, `CheckInDat
 (67, 1, 3, '2024-04-26', '2024-04-26', '25000.00', 'approved'),
 (68, 1, 2, '2024-04-26', '2024-04-26', '18000.00', 'declined'),
 (69, 1, 2, '2024-04-27', '2024-04-27', '18000.00', ''),
-(70, 1, 1, '2024-04-28', '2024-04-28', '15000.00', 'cancelled'),
-(71, 1, 1, '2024-04-29', '2024-04-29', '15000.00', 'approved'),
-(72, 1, 2, '2024-04-30', '2024-04-30', '18000.00', 'approved'),
-(73, 7, 1, '2024-04-28', '2024-04-28', '15000.00', 'cancelled'),
-(74, 1, 2, '2024-04-28', '2024-04-28', '18000.00', 'pending'),
-(75, 8, 2, '2024-05-01', '2024-05-01', '18000.00', 'pending'),
-(77, 1, 2, '2024-05-02', '2024-05-02', '18000.00', 'pending');
+(70, 1, 1, '2024-04-28', '2024-04-28', '15000.00', 'approved');
 
 -- --------------------------------------------------------
 
@@ -338,12 +302,6 @@ ALTER TABLE `inclusions`
   ADD PRIMARY KEY (`inclusion_id`);
 
 --
--- Indexes for table `notifications`
---
-ALTER TABLE `notifications`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `packages`
 --
 ALTER TABLE `packages`
@@ -403,7 +361,7 @@ ALTER TABLE `feedbacks`
 -- AUTO_INCREMENT for table `guests`
 --
 ALTER TABLE `guests`
-  MODIFY `GuestID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `GuestID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `inclusions`
@@ -412,28 +370,22 @@ ALTER TABLE `inclusions`
   MODIFY `inclusion_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `notifications`
---
-ALTER TABLE `notifications`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
 -- AUTO_INCREMENT for table `packages`
 --
 ALTER TABLE `packages`
-  MODIFY `PackageID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `PackageID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `payments`
 --
 ALTER TABLE `payments`
-  MODIFY `PaymentID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
+  MODIFY `PaymentID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- AUTO_INCREMENT for table `reservations`
 --
 ALTER TABLE `reservations`
-  MODIFY `ReservationID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=78;
+  MODIFY `ReservationID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
 
 --
 -- AUTO_INCREMENT for table `user`
