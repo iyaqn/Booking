@@ -115,7 +115,6 @@ class Email
                     </div>
                     <hr />
                     <h2 class="text-center">' . $subject . '</h2>
-                    <p class="text-center">Dear valued guest,</p>
                     <p class="text-center">
                         ' . $message . '
                     </p>

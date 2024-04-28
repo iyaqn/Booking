@@ -51,11 +51,11 @@ $conn = $db->getConnection();
             <div class="sidebar-heading">
         Reservations
     </div>
-                <!-- Nav Item - Confirmed Reservations -->
+                <!-- Nav Item - All Reservations -->
     <li class="nav-item">
         <a class="nav-link" href="dashboard.php">
             <i class="fas fa-check-circle"></i>
-            <span>Confirmed Reservations</span>
+            <span>All Reservations</span>
         </a>
     </li>
     <!-- Nav Item - Pending Reservations -->
@@ -278,7 +278,7 @@ $conn = $db->getConnection();
                         <div class="col-md-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h5 class="card-title">Confirmed Reservation List</h5>
+                                    <h5 class="card-title">All Reservations List</h5>
                                 </div>
                                 <div class="card-body">
                                     <table id="reservationlist" class="display" style="width:100%">

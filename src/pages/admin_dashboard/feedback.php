@@ -68,11 +68,11 @@ if ($error) {
             <div class="sidebar-heading">
         Reservations
     </div>
-                <!-- Nav Item - Confirmed Reservations -->
+                <!-- Nav Item - All Reservations -->
     <li class="nav-item">
         <a class="nav-link" href="dashboard.php">
             <i class="fas fa-check-circle"></i>
-            <span>Confirmed Reservations</span>
+            <span>All Reservations</span>
         </a>
     </li>
     <!-- Nav Item - Pending Reservations -->
